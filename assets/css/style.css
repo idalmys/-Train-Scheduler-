@@ -28,7 +28,7 @@ section .jumbotron {
     width: 850px;
    
 }
-#update, #add{
+ #add{
     margin: 10px;
     background-color: rgb(226, 138, 38);
     width: 95px;

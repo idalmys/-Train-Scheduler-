@@ -25,8 +25,8 @@ var diffTime="";
 var tRemainder="";
 var nextTrain="";
 var trains="";
-var upd="";
-var keys=""
+var keys="";
+
 
 //object Train
 function train(name,destination,frequency,first_ttime){
@@ -95,20 +95,13 @@ function GetTrain(){
             var ImgT=$("<img>");
                 ImgT.attr("src","assets/images/trash.png");
                 btnsD.append(ImgT); 
-            var btnsU=$("<button>");
-               btnsU.addClass("btn btn-warning");
-               btnsU.attr("id",keys[i]);
-            var ImgU=$("<img>");
-                ImgU.attr("src","assets/images/edit.png");
-                btnsU.append(ImgU);  
-          
+                     
             var tr=$("<tr>").append(
                 $("<td>").text(name),
                 $("<td>").text(destination),
                 $("<td>").text(frequency),
                 $("<td>").text(moment(nextTrain).format("hh:mm")),
                 $("<td>").text(tMinutesTillTrain),
-                $("<td>").append(btnsU),
                 $("<td>").append(btnsD));       
     
                 $("#loadTrain").append(tr);
@@ -125,38 +118,9 @@ function deleteTrain(){
     var id=$(this).attr("id");
     
     db.child(id).remove();
- 
-    }
-    
-   
-
- //update train
-function updateTrain(){
-   
-    var id=$(this).attr("id");
-    var tu=firebase.database().ref("/train").child(id);
-  
-    tu.once("value",function(snapshot){
-  
-        trains=snapshot.val();
-        name=snapshot.val().name;
-        destination=snapshot.val().destination;
-        frequency=snapshot.val().frequency;
-        first_ttime=snapshot.val().first_ttime;
-
-        $("#tname").val(name);
-        $("#tdestination").val(destination);
-        $("#tfrecuency").val(frequency);
-        $("#ttime").val(first_ttime);
-        var t=new train(name,destination,frequency,first_ttime); 
-       console.log(tu);
-       tu.update(name );   
-    
-    });
 
  }
  
-
 // Restart Values
 function restart(){
     $("#tname").val("");
@@ -186,23 +150,9 @@ $("#add").on("click",function(event){
     HtmlValues();
   
     var t=new train(name,destination,frequency,first_ttime);  
-    AddTrain(t); 
-    
-    restart();
-    
-});
-$("#update").on("click",function(event){
-    event.preventDefault();
-
-    //HtmlValues();
-   updateTrain();
-    
-    //restart();
-    
-});
-
+    AddTrain(t);     
+    restart();  
+}); 
 
 $(document).on("click", ".btn-danger", deleteTrain);
-//$(document).on("click", ".btn-warning", updateTrain);
-
 });
