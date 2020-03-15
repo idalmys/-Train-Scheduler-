@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Train Scheduler</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link type="text/css" rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    </head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <body>
+<section class="container" id="getTrain">
+  <div class="jumbotron ">
+    <h1>Any time is train time</h1>
+</div>
+<table class="table table-hover">
+  <h4>Current Station</h4>
+  <thead>
+    <tr>
+      <th scope="col">Train Name</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Frequency(min)</th>
+      <th scope="col">Next Arrival</th>
+      <th scope="col">Minutes Away</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody id="loadTrain">  
+                     
+  </tbody>
+</table>
+</section>
+<section class="container" id="addT">
+  <h4>Add Train</h4>
+  <div id="DivError" >
+    <button type="button" class="btn btn-danger" id="error"></button>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="train-name">Train Name</label>
+      <input type="text" class="form-control" id="tname" >
+    </div>
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <input type="text" class="form-control" id="tdestination">
+    </div>
+    <div class="form-group">
+        <label for="time">First Train Time(HH:MM) - military time </label>
+        <input type="text" class="form-control" id="ttime">
+      </div>
+      <div class="form-group">
+        <label for="frequency">Frequency(min)</label>
+        <input type="text" class="form-control" id="tfrecuency">
+      </div>
+      
+    <button type="submit" class="btn " id="add">Submit                 
+    </button>
+        
+    <button type="submit" class="btn" id="update">Update
+    
+    </button>
+  </form>
+
+</section>
+<script  type="text/javascript" src="assets/javascript/train.js"></script>
+    </body>
+</html>
